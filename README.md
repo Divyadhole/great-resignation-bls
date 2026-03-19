@@ -1,4 +1,4 @@
-# 🚪 The Great Resignation — BLS JOLTS Analysis
+# 🚪 The Great Resignation — BLS JOLTS Analysis # 🚪 The Great Resignation — BLS JOLTS Analysisnbsp; [![Live Dashboard](https://img.shields.io/badge/🌐%20Live%20Dashboard-Click%20Here-brightgreen)](https://divyadhole.github.io/great-resignation-bls/)
 
 > *Was the Great Resignation real? How big was it? Which industries were hit hardest? Is it over? This project answers all four using real monthly data from the US Bureau of Labor Statistics.*
 
