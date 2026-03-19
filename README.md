@@ -2,10 +2,19 @@
 
 > *Was the Great Resignation real? How big was it? Which industries were hit hardest? Is it over? This project answers all four using real monthly data from the US Bureau of Labor Statistics.*
 
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)
-![SQL](https://img.shields.io/badge/SQL-SQLite-lightgrey?logo=sqlite)
-![Data](https://img.shields.io/badge/Data-BLS%20JOLTS-orange)
-![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://python.org)
+[![SQL](https://img.shields.io/badge/SQL-SQLite-lightgrey?logo=sqlite)](https://sqlite.org)
+[![Data](https://img.shields.io/badge/Data-BLS%20JOLTS-orange)](https://www.bls.gov/jlt/)
+[![Dashboard](https://img.shields.io/badge/Dashboard-Live%20%F0%9F%9F%A2-brightgreen)](https://divyadhole.github.io/great-resignation-bls/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+---
+
+## 🌐 Live Interactive Dashboard
+
+**👉 [https://divyadhole.github.io/great-resignation-bls/](https://divyadhole.github.io/great-resignation-bls/)**
+
+No software required. Works in any browser. Built with Chart.js — dark theme, interactive filters, real BLS data.
 
 ---
 
@@ -49,6 +58,22 @@ Between April 2021 and December 2022, American workers quit their jobs at rates 
 
 ---
 
+## Interactive Dashboard
+
+### Full Dashboard Overview
+![Dashboard Full](outputs/dashboard/screenshots/dashboard_full.png)
+
+### KPI Summary Cards
+![KPI Cards](outputs/dashboard/screenshots/dashboard_kpis.png)
+
+### Timeline Chart — US Monthly Quit Rate 2019–2023
+![Timeline](outputs/dashboard/screenshots/dashboard_timeline.png)
+
+### Industry Comparison + Wage Pressure Scatter
+![Industry and Scatter](outputs/dashboard/screenshots/dashboard_industry_scatter.png)
+
+---
+
 ## Project Structure
 
 ```
@@ -60,11 +85,14 @@ great-resignation-bls/
 │   └── charts.py             # 6 investigative charts
 ├── sql/
 │   └── analysis/jolts_analysis.sql  # 6 SQL queries with window functions
+├── docs/
+│   └── index.html            # GitHub Pages — live interactive dashboard
 ├── data/
 │   └── jolts.db              # SQLite with real BLS observations
 ├── outputs/
 │   ├── charts/               # 6 PNG visualizations
-│   └── excel/                # 6-sheet Excel workbook
+│   ├── excel/                # 6-sheet Excel workbook
+│   └── dashboard/            # Dashboard + screenshots
 └── run_analysis.py
 ```
 
@@ -79,8 +107,6 @@ great-resignation-bls/
 | **Rolling 3-month avg** | Smooth monthly noise | Window function (SQL) |
 | **YoY change** | Annual quit rate trend | LAG() window function |
 | **Wage pressure index** | Quits×0.6 + Openings×0.4 | Composite scoring |
-
-Non-parametric interpretation: A Cohen's d of 3.82 means the GR quit rate was nearly 4 standard deviations above the pre-pandemic mean. This is statistically extraordinary.
 
 ---
 
@@ -139,34 +165,6 @@ FROM industry_quits GROUP BY industry ORDER BY gr_lift DESC;
 
 ---
 
-## Interactive Dashboard
-
-A fully interactive dashboard is included — no software required. Open it in any browser or deploy to GitHub Pages.
-
-```
-outputs/dashboard/index.html
-```
-
-**To host live on GitHub Pages:**
-1. Repo → Settings → Pages → Source: `main` → `/outputs/dashboard`
-2. Live at: `https://divyadhole.github.io/great-resignation-bls/`
-
-### Dashboard Screenshots
-
-#### Full dashboard overview
-![Dashboard Full](outputs/dashboard/screenshots/dashboard_full.png)
-
-#### KPI summary cards
-![KPI Cards](outputs/dashboard/screenshots/dashboard_kpis.png)
-
-#### Timeline chart — US Monthly Quit Rate 2019–2023
-![Timeline](outputs/dashboard/screenshots/dashboard_timeline.png)
-
-#### Industry comparison + Wage pressure scatter
-![Industry and Scatter](outputs/dashboard/screenshots/dashboard_industry_scatter.png)
-
----
-
 ## Quickstart
 
 ```bash
@@ -191,8 +189,8 @@ python src/fetch_bls_data.py && python run_analysis.py
 | SQL | Window functions (LAG, AVG OVER), CASE WHEN pivot, phase analysis |
 | Statistics | Welch t-test, Cohen's d, baseline comparison, effect sizes |
 | Python | pandas, matplotlib, seaborn, modular src/ structure |
+| Dashboard | Interactive HTML dashboard, Chart.js, dark theme, GitHub Pages |
 | Business insight | Labor market dynamics, wage pressure, industry targeting |
-| Honest methodology | Effect sizes reported, limitations noted |
 
 ---
 
