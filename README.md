@@ -192,6 +192,4 @@ python src/fetch_bls_data.py && python run_analysis.py
 | Dashboard | Interactive HTML dashboard, Chart.js, dark theme, GitHub Pages |
 | Business insight | Labor market dynamics, wage pressure, industry targeting |
 
----
 
-*Junior Data Analyst Portfolio — Project 5 of 40 | Data: BLS.gov (public domain)*
