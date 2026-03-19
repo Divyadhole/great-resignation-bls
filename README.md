@@ -139,6 +139,34 @@ FROM industry_quits GROUP BY industry ORDER BY gr_lift DESC;
 
 ---
 
+## Interactive Dashboard
+
+A fully interactive dashboard is included — no software required. Open it in any browser or deploy to GitHub Pages.
+
+```
+outputs/dashboard/index.html
+```
+
+**To host live on GitHub Pages:**
+1. Repo → Settings → Pages → Source: `main` → `/outputs/dashboard`
+2. Live at: `https://divyadhole.github.io/great-resignation-bls/`
+
+### Dashboard Screenshots
+
+#### Full dashboard overview
+![Dashboard Full](outputs/dashboard/screenshots/dashboard_full.png)
+
+#### KPI summary cards
+![KPI Cards](outputs/dashboard/screenshots/dashboard_kpis.png)
+
+#### Timeline chart — US Monthly Quit Rate 2019–2023
+![Timeline](outputs/dashboard/screenshots/dashboard_timeline.png)
+
+#### Industry comparison + Wage pressure scatter
+![Industry and Scatter](outputs/dashboard/screenshots/dashboard_industry_scatter.png)
+
+---
+
 ## Quickstart
 
 ```bash
