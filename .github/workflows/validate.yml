@@ -1,0 +1,13 @@
+name: Great Resignation Validation
+on: [push]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: pip install numpy scipy pandas
+      - run: python src/effect_size.py
+      - name: Verify BLS data embedded
+        run: python -c "from src.bls_data import JOLTS_NATIONAL; print(f'✓ {len(JOLTS_NATIONAL)} monthly records loaded')"
