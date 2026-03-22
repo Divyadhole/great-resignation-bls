@@ -107,3 +107,25 @@ SELECT
 FROM jolts_total
 ORDER BY wage_pressure_index DESC
 LIMIT 15;
+
+-- 7. Great Resignation duration and intensity by phase
+SELECT
+    CASE
+        WHEN month < '2021-04' THEN '1. Pre-GR'
+        WHEN month BETWEEN '2021-04' AND '2021-11' THEN '2. Acceleration'
+        WHEN month BETWEEN '2021-11' AND '2022-06' THEN '3. Peak Phase'
+        WHEN month > '2022-06' THEN '4. Normalization'
+    END AS phase,
+    COUNT(*) months_in_phase,
+    ROUND(AVG(quit_rate), 3) avg_quit_rate,
+    ROUND(MAX(quit_rate), 3) max_quit_rate
+FROM jolts_national
+GROUP BY phase ORDER BY phase;
+
+-- 8. Months workers were behind vs ahead of labor market tightness
+SELECT
+    SUM(CASE WHEN quit_rate > 2.5 THEN 1 ELSE 0 END) months_elevated,
+    SUM(CASE WHEN quit_rate <= 2.0 THEN 1 ELSE 0 END) months_normal,
+    ROUND(AVG(CASE WHEN quit_rate > 2.5 THEN quit_rate END), 3) avg_elevated_rate
+FROM jolts_national
+WHERE month >= '2019-01';
